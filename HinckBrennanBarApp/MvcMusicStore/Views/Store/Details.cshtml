@@ -1,0 +1,30 @@
+﻿@model MvcMusicStore.Models.Album
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Album: @Model.Title</h2>
+
+<p>
+    <img alt="@Model.Title" src="@Model.AlbumArtUrl" height="100" width="100"/>
+</p>
+
+<div id="album-details">
+    <p>
+        <em>Drink Type: </em>
+        @Model.Genre.Name
+    </p>
+    <p>
+        <em>Alcohol</em>
+        @Model.Artist.Name
+    </p>
+    <p>
+        <em>Price: </em>
+        @String.Format("{0:F}", Model.Price)
+    </p>
+    <p class="button">
+        @Html.ActionLink("Add to Queue", "AddToCart",
+        "ShoppingCart", new { id = Model.AlbumId }, "")
+    </p>
+</div>
